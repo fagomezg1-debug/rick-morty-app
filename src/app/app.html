@@ -1,0 +1,29 @@
+<div class="page">
+  <h1>🛸 Personajes de Rick and Morty 🧪</h1>
+
+  <div class="search-box">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="Buscar personaje por nombre"
+    >
+    <button (click)="searchCharacter()">Buscar</button>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <p>Cargando personajes interdimensionales...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div class="container" *ngIf="!loading">
+    <div class="card" *ngFor="let character of characters">
+      <img [src]="character.image" [alt]="character.name">
+      <h2>{{ character.name }}</h2>
+      <p><strong>Estado:</strong> {{ character.status }}</p>
+      <p><strong>Especie:</strong> {{ character.species }}</p>
+    </div>
+  </div>
+</div>
